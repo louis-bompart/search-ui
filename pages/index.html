@@ -9,7 +9,7 @@
     <script src="js/templates/templates.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        Coveo.SearchEndpoint.configureSampleEndpointV2();
+        Coveo.SearchEndpoint.configureSampleEndpoint();
         Coveo.init(document.body);
       })
     </script>
@@ -24,6 +24,7 @@
     </div>
     <div class="coveo-main-section">
       <div class="coveo-facet-column">
+        <div class="CoveoFacet" data-title="Concepts" data-field="@concepts" data-is-multi-value-field="true" data-tab="All"></div>
         <div class="CoveoFacet" data-title="Type" data-field="@objecttype" data-tab="All"></div>
         <div class="CoveoFacet" data-title="FileType" data-field="@filetype" data-tab="All"></div>
         <div class="CoveoFacet" data-title="Author" data-field="@author" data-tab="All"></div>

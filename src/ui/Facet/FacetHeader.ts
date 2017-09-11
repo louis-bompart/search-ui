@@ -208,7 +208,7 @@ export class FacetHeader {
     return title.el;
   }
 
-  public buildEraser(): HTMLElement {
+  private buildEraser(): HTMLElement {
     const eraser = $$('div', { title: l('Clear', this.options.title), className: 'coveo-facet-header-eraser' }, SVGIcons.icons.mainClear);
     SVGDom.addClassToSVGInContainer(eraser.el, 'coveo-facet-header-eraser-svg');
 

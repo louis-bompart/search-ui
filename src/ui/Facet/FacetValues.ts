@@ -177,7 +177,7 @@ export class FacetValues {
   }
 
   hasSelectedOrExcludedValues(): boolean {
-    return this.getSelected().length != 0 || this.getExcluded().length != 0;
+    return this.getSelected().length !== 0 || this.getExcluded().length !== 0;
   }
 
   reset() {

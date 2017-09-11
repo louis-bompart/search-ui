@@ -1055,6 +1055,9 @@ export class Facet extends Component {
   }
 
   public processFacetSearchAllResultsSelected(facetValues: FacetValue[]): void {
+    console.log('processFacetSearchAllResultsSelected');
+    this.selectMultipleValues(facetValues);
+
     let valuesForAnalytics = [];
     _.each(facetValues, (facetValue) => {
       this.ensureFacetValueIsInList(facetValue);
@@ -1231,6 +1234,7 @@ export class Facet extends Component {
   }
 
   protected facetValueHasChanged() {
+    console.log('facetValueHasChanged');
     this.updateQueryStateModel();
     this.rebuildValueElements();
     Defer.defer(() => {
@@ -1239,6 +1243,7 @@ export class Facet extends Component {
   }
 
   protected updateAppearanceDependingOnState() {
+    console.log('updateAppearanceDependingOnState', 'hasSelected', this.values.hasSelectedOrExcludedValues());
     $$(this.element).toggleClass('coveo-active', this.values.hasSelectedOrExcludedValues());
     $$(this.element).toggleClass('coveo-facet-empty', !this.isAnyValueCurrentlyDisplayed());
     $$(this.facetHeader.eraserElement).toggleClass('coveo-facet-header-eraser-visible', this.values.hasSelectedOrExcludedValues());
@@ -1452,20 +1457,11 @@ export class Facet extends Component {
   }
 
   private updateIncludedQueryStateModel() {
-    let selectedValues: IQueryStateIncludedAttribute = {
-      included: this.getSelectedValues(),
-      title: this.includedAttributeId
-    };
-    this.queryStateModel.set(this.includedAttributeId, selectedValues.included);
+    this.queryStateModel.set(this.includedAttributeId, this.getSelectedValues());
   }
 
   private updateExcludedQueryStateModel() {
-    let excludedValues: IQueryStateExcludedAttribute = {
-      title: this.excludedAttributeId,
-      excluded: this.getExcludedValues()
-    };
-
-    this.queryStateModel.set(this.excludedAttributeId, excludedValues.excluded);
+    this.queryStateModel.set(this.excludedAttributeId, this.getExcludedValues());
   }
 
   private updateLookupValueQueryStateModel() {
@@ -1766,7 +1762,7 @@ export class Facet extends Component {
     // the end of the availables values
     this.facetQueryController.fetchMore(this.numberOfValues + 1).then((queryResults: IQueryResults) => {
       let facetValues = new FacetValues(queryResults.groupByResults[0]);
-
+      
       facetValues.importActiveValuesFromOtherList(this.values);
       facetValues.sortValuesDependingOnStatus(this.numberOfValues);
       this.values = facetValues;
