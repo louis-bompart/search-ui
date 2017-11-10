@@ -47,7 +47,7 @@ export class Icon extends Component {
      * Default value is `undefined`, which means that the Coveo JavaScript Search Framework outputs a suitable icon
      * depending on the result file type.
      */
-    value: ComponentOptions.buildStringOption(),
+    value: ComponentOptions.buildIconOption(),
 
     /**
      * Specifies whether the Icon component should output the smaller version of the icon instead of the regular one.
@@ -93,11 +93,11 @@ export class Icon extends Component {
     this.result = this.result || this.resolveResult();
     Assert.exists(this.result);
 
-    var possibleInternalQuickview = $$(this.element).find('.' + Component.computeCssClassNameForType('Quickview'));
+    const possibleInternalQuickview = $$(this.element).find('.' + Component.computeCssClassNameForType('Quickview'));
     if (!Utils.isNullOrUndefined(possibleInternalQuickview) && QueryUtils.hasHTMLVersion(this.result)) {
       $$(this.element).addClass('coveo-with-quickview');
       $$(this.element).on('click', () => {
-        var qv = <any>Component.get(possibleInternalQuickview);
+        const qv = <any>Component.get(possibleInternalQuickview);
         qv.open();
       });
     }
@@ -106,7 +106,7 @@ export class Icon extends Component {
   }
 
   static createIcon(result: IQueryResult, options: IIconOptions = {}, element: HTMLElement = $$('div').el, bindings?: IComponentBindings) {
-    var info = FileTypes.get(result);
+    let info = FileTypes.get(result);
 
     if (!bindings && result.searchInterface) {
       // try to resolve results bindings automatically
