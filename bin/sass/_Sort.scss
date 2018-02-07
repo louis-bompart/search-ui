@@ -1,0 +1,30 @@
+$stop-float: new-breakpoint(max-width 480px 1);
+
+.coveo-sort-section {
+  text-align: right;
+  font-size: 0;
+}
+
+.CoveoSort {
+  @include resultsHeaderElement();
+  .coveo-icon {
+    margin-left: 5px;
+    position: relative;
+    @extend .coveo-sprites-arrow-down;
+  }
+
+  &.coveo-ascending {
+    .coveo-icon {
+      @extend .coveo-sprites-arrow-up;
+    }
+  }
+  &.coveo-descending {
+    .coveo-icon {
+      @extend .coveo-sprites-arrow-down;
+    }
+  }
+
+  &.coveo-sort-hidden {
+    display: none;
+  }
+}

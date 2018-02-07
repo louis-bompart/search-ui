@@ -1,0 +1,21 @@
+.CoveoResultLayout {
+  @include display(flex);
+  &.coveo-result-layout-hidden {
+    display: none;
+  }
+}
+
+.coveo-result-layout-selector {
+  @include resultsHeaderElement();
+  padding-bottom: 9px;
+  .coveo-icon {
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.coveo-result-layout-selector-caption {
+  vertical-align: middle;
+  display: inline-block;
+}

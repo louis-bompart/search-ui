@@ -1,0 +1,223 @@
+.CoveoResult {
+  position: relative; // Allows using absolute positioning for buttons such as Show All Thread, etc.
+
+  &.coveo-omnibox-selectable {
+    padding: 10px 10px 10px 15px;
+    margin: 0;
+  }
+
+  .coveo-no-thumbnail {
+    display: none;
+  }
+
+  .coveo-date {
+    float: right;
+    font-size: 13px;
+    margin-left: 10px;
+    padding-top: 3px;
+  }
+
+  .coveo-title {
+    display: block;
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 24px;
+    > * {
+      vertical-align: middle;
+    }
+
+    .CoveoResultLink {
+      margin-right: 5px;
+      display: inline;
+      overflow: hidden;
+      white-space: normal;
+    }
+
+    .CoveoResultLink:after {
+      content: '\00a0';
+      white-space: nowrap;
+      visibility: hidden;
+    }
+  }
+
+  .coveo-excerpt {
+    max-width: 600px;
+    font-size: 14px;
+    padding: 5px 0 8px 0;
+  }
+
+  a {
+    @include clickable();
+  }
+
+  .coveo-badge {
+    display: inline-block;
+    padding: 4px 6px;
+    vertical-align: middle;
+    font-size: 12px;
+  }
+
+  .CoveoBadge .coveo-value {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 1em;
+    line-height: 1.25em;
+    margin-right: 8px;
+
+    &.coveo-clickable {
+      @include clickable();
+    }
+
+    .coveo-badge-icon {
+      position: relative;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 2px;
+      vertical-align: middle;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 2px;
+        top: 3px;
+        width: 12px;
+        height: 10px;
+        transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        border: 2px solid;
+        border-right: none;
+        -webkit-backface-visibility: hidden;
+        -webkit-border-top-left-radius: 2px;
+        -webkit-border-bottom-left-radius: 2px;
+        -moz-border-radius-topleft: 2px;
+        -moz-border-radius-bottomleft: 2px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        box-sizing: border-box;
+      }
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 7px;
+        height: 7px;
+        border: 2px solid;
+        border-bottom: none;
+        border-left: none;
+
+        -webkit-border-top-right-radius: 3px;
+        -moz-border-radius-topright: 3px;
+        border-top-right-radius: 3px;
+        box-sizing: border-box;
+      }
+
+    }
+
+    .coveo-badge-label {
+      vertical-align: middle;
+    }
+  }
+
+  .coveo-selectable-link {
+    @include clickable();
+  }
+
+  .coveo-field .coveo-label {
+    font-weight: normal;
+  }
+
+  .CoveoResultFolding {
+    .coveo-child-result {
+      .CoveoQuickview {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &.coveo-is-recommendation {
+    box-shadow: 0 0 0 5px #263E55;
+  }
+}
+
+.coveo-list-layout.CoveoResult {
+  border-bottom: $default-border;
+  margin: 20px 0px 20px 20px;
+}
+
+.coveo-card-layout {
+  margin-right: -20px;
+  &.CoveoResult {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+
+    font-size: 0.9em;
+
+    width: 300px;
+    @include flex-grow(1);
+    & + .CoveoResult {
+
+    }
+    margin: 0 20px 20px 0;
+    @include mediaSelector(480) {
+      margin: 0 0 20px 0;
+    }
+    @include defaultRoundedBorder();
+
+    &.coveo-clickable {
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0 0 0 2px $color-vibrant-blue;
+        border-color: $color-vibrant-blue;
+      }
+    }
+
+    .coveo-result-row:first-child {
+      margin-top: 0;
+    }
+
+    .coveo-result-frame, &.coveo-result-frame {
+      display: flex;
+      padding: 20px;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+    }
+
+    .CoveoResultLink {
+      font-size: 16px;
+      line-height: 21px;
+    }
+  }
+  // These divs are used for filling the space when the number of cards is not even
+  > div:empty {
+    width: 300px;
+    height: 0;
+    @include flex-grow(1);
+    margin-right: 20px;
+  }
+}
+
+.coveo-table-layout {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  > .CoveoResult {
+    display: table-row;
+    > * {
+      padding: .5em 0;
+      border-bottom: $default-border;
+    }
+  }
+}
+
+.coveo-card-overlay a {
+  @include clickable($dark-background: true);
+}
