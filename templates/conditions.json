@@ -1,24 +1,4 @@
 {
-  "CardChatter": {
-    "priority": 3,
-    "layout": "card",
-    "fieldsToMatch": [
-      {
-        "field": "objecttype",
-        "values": ["FeedItem", "FeedComment"]
-      }
-    ]
-  },
-  "Chatter": {
-    "priority": 2,
-    "layout": "list",
-    "fieldsToMatch": [
-      {
-        "field": "objecttype",
-        "values": ["FeedItem", "FeedComment"]
-      }
-    ]
-  },
   "CardDropbox": {
     "priority": 2,
     "layout": "card",

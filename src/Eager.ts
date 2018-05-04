@@ -44,26 +44,6 @@ CardActionBar.doExport();
 import { CardOverlay } from './ui/CardOverlay/CardOverlay';
 CardOverlay.doExport();
 
-import { ChatterLikedBy } from './ui/ChatterLikedBy/ChatterLikedBy';
-ChatterLikedBy.doExport();
-import { registerFields as chatterLikedByRegisterFields } from './ui/ChatterLikedBy/ChatterLikedByFields';
-chatterLikedByRegisterFields();
-
-import { ChatterPostAttachment } from './ui/ChatterPostAttachment/ChatterPostAttachment';
-ChatterPostAttachment.doExport();
-import { registerFields as chatterPostAttachmentRegisterFields } from './ui/ChatterPostAttachment/ChatterPostAttachmentFields';
-chatterPostAttachmentRegisterFields();
-
-import { ChatterPostedBy } from './ui/ChatterPostedBy/ChatterPostedBy';
-ChatterPostedBy.doExport();
-import { registerFields as chatterPostedByRegisterFields } from './ui/ChatterPostedBy/ChatterPostedByFields';
-chatterPostedByRegisterFields();
-
-import { ChatterTopic } from './ui/ChatterTopic/ChatterTopic';
-ChatterTopic.doExport();
-import { registerFields as chatterTopicRegisterFields } from './ui/ChatterTopic/ChatterTopicFields';
-chatterTopicRegisterFields();
-
 import { DidYouMean } from './ui/DidYouMean/DidYouMean';
 DidYouMean.doExport();
 

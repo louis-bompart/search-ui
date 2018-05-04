@@ -44,26 +44,6 @@ lazyCardActionBar();
 import { lazyCardOverlay } from './ui/CardOverlay/LazyCardOverlay';
 lazyCardOverlay();
 
-import { lazyChatterLikedBy } from './ui/ChatterLikedBy/LazyChatterLikedBy';
-lazyChatterLikedBy();
-import { registerFields as chatterLikedByRegisterFields } from './ui/ChatterLikedBy/ChatterLikedByFields';
-chatterLikedByRegisterFields();
-
-import { lazyChatterPostAttachment } from './ui/ChatterPostAttachment/LazyChatterPostAttachment';
-lazyChatterPostAttachment();
-import { registerFields as chatterPostAttachmentRegisterFields } from './ui/ChatterPostAttachment/ChatterPostAttachmentFields';
-chatterPostAttachmentRegisterFields();
-
-import { lazyChatterPostedBy } from './ui/ChatterPostedBy/LazyChatterPostedBy';
-lazyChatterPostedBy();
-import { registerFields as chatterPostedByRegisterFields } from './ui/ChatterPostedBy/ChatterPostedByFields';
-chatterPostedByRegisterFields();
-
-import { lazyChatterTopic } from './ui/ChatterTopic/LazyChatterTopic';
-lazyChatterTopic();
-import { registerFields as chatterTopicRegisterFields } from './ui/ChatterTopic/ChatterTopicFields';
-chatterTopicRegisterFields();
-
 import { lazyDebug } from './ui/Debug/LazyDebug';
 lazyDebug();
 

@@ -118,15 +118,6 @@ BadgeTest();
 import { BreadcrumbTest } from './ui/BreadcrumbTest';
 BreadcrumbTest();
 
-import { ChatterLikedByTest } from './ui/ChatterLikedByTest';
-ChatterLikedByTest();
-
-import { ChatterPostAttachmentTest } from './ui/ChatterPostAttachmentTest';
-ChatterPostAttachmentTest();
-
-import { ChatterPostedByTest } from './ui/ChatterPostedByTest';
-ChatterPostedByTest();
-
 import { ComponentEventsTest } from './ui/ComponentEventsTest';
 ComponentEventsTest();
 
@@ -323,7 +314,7 @@ import { ValueElementRendererTest } from './ui/ValueElementRendererTest';
 ValueElementRendererTest();
 
 import { ResultActionsMenuTest } from './ui/ResultActionsMenuTest';
-ResultActionsMenuTest()
+ResultActionsMenuTest();
 
 import { ResultsPerPageTest } from './ui/ResultsPerPageTest';
 ResultsPerPageTest();

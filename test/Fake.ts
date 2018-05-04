@@ -272,57 +272,6 @@ export class FakeResults {
     return fieldValues;
   }
 
-  static createFakeFeedItemResult(token: string, nbLikes: number = 0, nbTopics: number = 0, hasAttachment: boolean = false) {
-    var result = this.createFakeResult(token);
-    result.raw.sfparentid = 'parentid';
-    result.raw.sfparentname = 'parentname';
-    result.raw.sffeeditemid = token + 'id';
-    result.clickUri = 'myURI/' + result.raw.sffeeditemid;
-    result.raw.sfcreatedby = 'createdby';
-    result.raw.sfcreatedbyname = 'createdby';
-    result.raw.sfcreatedbyid = 'createdbyid';
-    result.raw.sfinsertedbyid = 'createdbyid';
-
-    // Generate likes
-    if (nbLikes > 0) {
-      result.raw.sflikecount = nbLikes;
-      result.raw.sflikedby = '';
-      result.raw.sflikedbyid = '';
-
-      for (var i = 1; i <= nbLikes; i++) {
-        result.raw.sflikedby += 'LikeName' + i;
-        result.raw.sflikedbyid += 'LikeId' + i;
-
-        if (i != nbLikes) {
-          result.raw.sflikedby += ';';
-          result.raw.sflikedbyid += ';';
-        }
-      }
-    }
-
-    // Generate topics
-    if (nbTopics > 0) {
-      result.raw.coveochatterfeedtopics = '';
-
-      for (var i = 1; i <= nbTopics; i++) {
-        result.raw.coveochatterfeedtopics += 'topic' + i;
-
-        if (i != nbTopics) {
-          result.raw.coveochatterfeedtopics += ';';
-        }
-      }
-    }
-
-    // Generate post attachment
-    if (hasAttachment) {
-      result.raw.coveochatterfeedtopics = 'PostAttachment';
-      result.raw.sfcontentfilename = 'fileName';
-      result.raw.sfcontentversionid = token;
-    }
-
-    return result;
-  }
-
   static createFakeSearchEvent(token = 'foo'): ISearchEvent {
     return {
       actionCause: token + 'actionCause',
