@@ -15,6 +15,8 @@ import { analyticsActionCauseList } from '../../src/ui/Analytics/AnalyticsAction
 import { IQueryResults } from '../../src/rest/QueryResults';
 import { Defer } from '../../src/misc/Defer';
 import { ResultLayoutSelector } from '../../src/ui/ResultLayoutSelector/ResultLayoutSelector';
+import { QueryEvents } from '../../src/Core';
+import { IQuerySuccessEventArgs } from '../../src/events/QueryEvents';
 
 export function ResultListTest() {
   describe('ResultList', () => {
@@ -401,6 +403,19 @@ export function ResultListTest() {
           });
         });
       });
+    });
+
+    it('should not ask for more data when infiniteScrolling is enable and the container is not a window', () => {
+      const infiniteScrollContainer = $$('<div></div>');
+      infiniteScrollContainer.setAttribute('style', 'height: 400px;');
+      const option: IResultListOptions = {
+        enableInfiniteScroll: true,
+        infiniteScrollContainer: infiniteScrollContainer.el
+      };
+      test = Mock.basicComponentSetup<ResultList>(ResultList, option);
+      spyOnProperty(test.cmp, 'displayMoreResults');
+      Simulate.query(test.env);
+      expect(test.cmp.displayMoreResults).not.toHaveBeenCalled();
     });
 
     describe('exposes options', () => {
