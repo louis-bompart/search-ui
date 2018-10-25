@@ -15,8 +15,6 @@ import { analyticsActionCauseList } from '../../src/ui/Analytics/AnalyticsAction
 import { IQueryResults } from '../../src/rest/QueryResults';
 import { Defer } from '../../src/misc/Defer';
 import { ResultLayoutSelector } from '../../src/ui/ResultLayoutSelector/ResultLayoutSelector';
-import { QueryEvents } from '../../src/Core';
-import { IQuerySuccessEventArgs } from '../../src/events/QueryEvents';
 
 export function ResultListTest() {
   describe('ResultList', () => {
@@ -40,7 +38,7 @@ export function ResultListTest() {
       describe('when returning less than 10 results', () => {
         let promiseResults: Promise<IQueryResults>;
         beforeEach(() => {
-          promiseResults = new Promise((resolve, reject) => {
+          promiseResults = new Promise(resolve => {
             resolve(FakeResults.createFakeResults(5));
           });
 
@@ -72,7 +70,7 @@ export function ResultListTest() {
       describe('when returning 10 or more results', () => {
         let promiseResults: Promise<IQueryResults>;
         beforeEach(() => {
-          promiseResults = new Promise((resolve, reject) => {
+          promiseResults = new Promise(resolve => {
             resolve(FakeResults.createFakeResults(10));
           });
 
@@ -406,14 +404,14 @@ export function ResultListTest() {
     });
 
     it('should not ask for more data when infiniteScrolling is enable and the container is not a window', () => {
-      const infiniteScrollContainer = $$('<div></div>');
+      const infiniteScrollContainer = $$('div');
       infiniteScrollContainer.setAttribute('style', 'height: 400px;');
       const option: IResultListOptions = {
         enableInfiniteScroll: true,
         infiniteScrollContainer: infiniteScrollContainer.el
       };
       test = Mock.basicComponentSetup<ResultList>(ResultList, option);
-      spyOnProperty(test.cmp, 'displayMoreResults');
+      spyOn(test.cmp, 'displayMoreResults');
       Simulate.query(test.env);
       expect(test.cmp.displayMoreResults).not.toHaveBeenCalled();
     });
@@ -476,7 +474,7 @@ export function ResultListTest() {
       it('resultTemplate allow to specify a template manually', done => {
         const tmpl: UnderscoreTemplate = Mock.mock<UnderscoreTemplate>(UnderscoreTemplate);
         const asSpy = <any>tmpl;
-        asSpy.instantiateToElement.and.returnValue(new Promise((resolve, reject) => resolve(document.createElement('div'))));
+        asSpy.instantiateToElement.and.returnValue(new Promise(resolve => resolve(document.createElement('div'))));
         test = Mock.optionsComponentSetup<ResultList, IResultListOptions>(ResultList, {
           resultTemplate: tmpl
         });
