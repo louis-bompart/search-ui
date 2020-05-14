@@ -174,6 +174,9 @@ ResponsiveComponentsManager.doExport();
 import { ResultAttachments } from './ui/ResultAttachments/ResultAttachments';
 ResultAttachments.doExport();
 
+import { ResponsiveDropdownBuilder } from './ui/ResponsiveComponents/ResponsiveFacetColumn';
+ResponsiveDropdownBuilder.doExport();
+
 import { ResultActionsMenu } from './ui/ResultActions/ResultActionsMenu';
 ResultActionsMenu.doExport();
 
